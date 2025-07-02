@@ -1,5 +1,5 @@
 import COUNTRIES_RESOURCES from 'i18n-iso-countries/langs/en.json';
-import i18next from 'i18next';
+import * as i18next from 'i18next';
 import I18nextXHRBackend, { HttpBackendOptions } from 'i18next-http-backend';
 import { merge } from 'lodash-es';
 
