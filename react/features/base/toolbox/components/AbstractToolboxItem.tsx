@@ -168,7 +168,7 @@ export default class AbstractToolboxItem<P extends IProps> extends Component<P> 
      * @returns {?string}
      */
     get accessibilityLabel(): string {
-        return this._maybeTranslateAttribute(this.props.accessibilityLabel);
+        return this._maybeTranslateAttribute(this.props.accessibilityLabel) ?? '';
     }
 
     /**
@@ -180,16 +180,17 @@ export default class AbstractToolboxItem<P extends IProps> extends Component<P> 
      * @private
      * @returns {string}
      */
-    _maybeTranslateAttribute(text: string, textProps?: any) {
+    _maybeTranslateAttribute(text: string, textProps?: any): string | undefined {
         const { t } = this.props;
 
-        if (textProps) {
-
-            return typeof t === 'function' ? t(text, textProps) : `${text} ${textProps}`;
-        }
-
-        return typeof t === 'function' ? t(text) : text;
+    if (textProps) {
+        const translated = typeof t === 'function' ? t(text, textProps) : `${text} ${typeof textProps === 'string' ? textProps : ''}`;
+        return typeof translated === 'string' ? translated : undefined;
     }
+
+    const translated = typeof t === 'function' ? t(text) : text;
+    return typeof translated === 'string' ? translated : undefined;
+}
 
     /**
      * Handles clicking/pressing this {@code AbstractToolboxItem} by

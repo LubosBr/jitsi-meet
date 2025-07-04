@@ -358,10 +358,8 @@ const ChatMessage = ({
                             <div className = { cx('usermessage', classes.userMessage) }>
                                 <Message
                                     screenReaderHelpText = { message.displayName === message.recipient
-                                        ? t<string>('chat.messageAccessibleTitleMe')
-                                        : t<string>('chat.messageAccessibleTitle', {
-                                            user: message.displayName
-                                        }) }
+                                        ? String(t('chat.messageAccessibleTitleMe'))
+                                        : String(t('chat.messageAccessibleTitle', { user: message.displayName }))}
                                     text = { getMessageText(message) } />
                                 {(message.privateMessage || (message.lobbyChat && !knocking))
                                     && _renderPrivateNotice()}

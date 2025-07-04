@@ -129,7 +129,7 @@ function DialinDialog(props: IProps) {
                     {t('prejoin.dialInMeeting')}
                 </div>
             </div>
-            <Label number = { 1 }>{ t('prejoin.dialInPin') }</Label>
+            <Label number = {1}><span>{t('prejoin.dialInPin')}</span></Label>
 
             <div className = 'prejoin-dialog-dialin-num-container'>
                 <div className = 'prejoin-dialog-dialin-num'>
@@ -149,7 +149,7 @@ function DialinDialog(props: IProps) {
             <Label
                 className = 'prejoin-dialog-dialin-spaced-label'
                 number = { 2 }>
-                {t('prejoin.connectedWithAudioQ')}
+                <span>{t('prejoin.connectedWithAudioQ')}</span>
             </Label>
             <div className = 'prejoin-dialog-dialin-btns'>
                 <Button

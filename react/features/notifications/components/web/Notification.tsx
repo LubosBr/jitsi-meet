@@ -209,8 +209,15 @@ const Notification = ({
     const renderDescription = useCallback(() => {
         const descriptionArray = [];
 
-        descriptionKey
-            && descriptionArray.push(t(descriptionKey, descriptionArguments));
+    //    descriptionKey
+    //        && descriptionArray.push(t(descriptionKey, descriptionArguments));
+     if (descriptionKey) {
+    const translated = descriptionArguments
+        ? t(descriptionKey, descriptionArguments as Record<string, any>)
+        : t(descriptionKey);
+
+    descriptionArray.push(translated);
+    }
 
         description && typeof description === 'string' && descriptionArray.push(description);
 
