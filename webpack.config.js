@@ -227,7 +227,8 @@ function getConfig(options = {}) {
                 crypto: false,
                 fs: false,
                 path: false,
-                process: false
+                process: false,
+		buffer: require.resolve('buffer/')
             }
         }
     };
@@ -308,7 +309,10 @@ module.exports = (_env, argv) => {
                 }),
                 new webpack.ProvidePlugin({
                     process: 'process/browser'
-                })
+                }),
+		new webpack.ProvidePlugin({
+    		    Buffer: ['buffer', 'Buffer']
+		})
             ],
 
             performance: getPerformanceHints(perfHintOptions, 5 * 1024 * 1024) },

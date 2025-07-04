@@ -53,6 +53,7 @@
     "amplitude-js": "8.21.9",
     "base64-js": "1.5.1",
     "bc-css-flags": "3.0.0",
+    "buffer": "^6.0.3",
     "clipboard-copy": "4.0.1",
     "clsx": "1.1.1",
     "dayjs": "1.11.13",

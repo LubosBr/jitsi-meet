@@ -1,5 +1,5 @@
 // @ts-ignore
-import * as ebml from 'ts-ebml';
+import { Decoder, Encoder, Reader, tools } from 'ts-ebml';
 import { v4 as uuidV4 } from 'uuid';
 
 import { IStore } from '../../../app/types';
@@ -348,8 +348,8 @@ const LocalRecordingManager: ILocalRecordingManager = {
  * @returns {Promise<Blob>}
  */
 async function fixDuration(data: Blob, duration: number): Promise<Blob> {
-    const decoder = new ebml.Decoder();
-    const reader = new ebml.Reader();
+    const decoder = new Decoder();
+    const reader = new Reader();
 
     reader.logging = false;
     reader.drop_default_duration = false;
@@ -362,7 +362,7 @@ async function fixDuration(data: Blob, duration: number): Promise<Blob> {
     }
     reader.stop();
 
-    const newMetadataBuf = ebml.tools.makeMetadataSeekable(
+    const newMetadataBuf = tools.makeMetadataSeekable(
         reader.metadatas,
         duration,
         [] // No cues
